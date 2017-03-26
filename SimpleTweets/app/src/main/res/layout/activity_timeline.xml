@@ -7,9 +7,21 @@
     android:layout_height="match_parent"
     tools:context="com.codepath.apps.kennardtweets.TimelineActivity">
 
-    <ListView
+    <include layout="@layout/toolbar_layout"/>
+
+    <RelativeLayout
+        android:layout_below="@+id/tooldbarlayout"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-        android:id="@+id/lvTweets"/>
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/lvTweets"
+        android:fitsSystemWindows="true"
+        />
+    </RelativeLayout>
 </RelativeLayout>

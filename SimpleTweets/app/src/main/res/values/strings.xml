@@ -3,5 +3,6 @@
 
     <string name="app_name">Kennard Tweets</string>
     <string name="login_label">Log in</string>
-
+    <string name="title">Kennard Tweets</string>
+    <string name="tweet">Tweet</string>
 </resources>

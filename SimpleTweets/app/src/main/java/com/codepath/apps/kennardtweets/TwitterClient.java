@@ -6,9 +6,13 @@ import org.scribe.builder.api.TwitterApi;
 
 import android.content.Context;
 
+import com.codepath.apps.kennardtweets.models.Tweet;
 import com.codepath.oauth.OAuthBaseClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.TextHttpResponseHandler;
+
+import cz.msebera.android.httpclient.Header;
 
 /*
  * 
@@ -25,9 +29,12 @@ import com.loopj.android.http.RequestParams;
 public class TwitterClient extends OAuthBaseClient {
     public static final Class<? extends Api> REST_API_CLASS = TwitterApi.class; // Change this
     public static final String REST_URL = "https://api.twitter.com/1.1"; // Change this, base API URL
-    public static final String REST_CONSUMER_KEY = "fDTtL5vrex75SXJJsF8S7bjZP";       // Change this
-    public static final String REST_CONSUMER_SECRET = "u5mCjBTstYirR8cnv5DLvK1HB5a8H41S2u0omho1Q5pP53e0ne"; // Change this
+    public static final String REST_CONSUMER_KEY = "GvAcIJWxhmREMBHtWhp8xrNdT";       // Change this
+    public static final String REST_CONSUMER_SECRET = "XJMNAgdfTmh7I75pIyrbL0DnKRPIr8VcuDCeSbknvtR2EXU2hw"; // Change this
     public static final String REST_CALLBACK_URL = "oauth://kennardcb"; // Change this (here and in manifest)
+    public static final String  POST_TWEET = "statuses/update.json";
+    public static final String GET_TWEETS = "statuses/home_timeline.json";
+    public static final String GET_USER = "account/verify_credentials.json";
 
     public TwitterClient(Context context) {
 		super(context, REST_API_CLASS, REST_URL, REST_CONSUMER_KEY, REST_CONSUMER_SECRET, REST_CALLBACK_URL);
@@ -52,11 +59,31 @@ public class TwitterClient extends OAuthBaseClient {
 	 *    i.e client.post(apiUrl, params, handler);
 	 */
 
-    public void getHomeTimeline(AsyncHttpResponseHandler handler){
-        String apiUrl = getApiUrl("statuses/home_timeline.json");
+    public void getHomeTimeline(long maxID, long sinceID, AsyncHttpResponseHandler handler){
+        String apiUrl = getApiUrl(GET_TWEETS);
         RequestParams params = new RequestParams();
         params.put("count", 25);
-        params.put("since_id", 1);
+        if (sinceID != 0) {
+            params.put("since_id", sinceID);
+        }
+        if (maxID != 0) {
+            params.put("max_id", maxID);
+        }
+        client.get(apiUrl, params, handler);
+    }
+
+    public void postTweet(String tweet, AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl(POST_TWEET);
+        if (tweet != null && !tweet.isEmpty()){
+            RequestParams params = new RequestParams();
+            params.put("status", tweet);
+            client.post(apiUrl, params, handler);
+        }
+    }
+
+    public void getCurrentUser(AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl(GET_USER);
+        RequestParams params = new RequestParams();
         client.get(apiUrl, params, handler);
     }
 }

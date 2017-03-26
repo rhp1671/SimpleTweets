@@ -3,6 +3,7 @@ package com.codepath.apps.kennardtweets;
 import android.app.Application;
 import android.content.Context;
 
+import com.codepath.apps.kennardtweets.models.User;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowLog;
 import com.raizlabs.android.dbflow.config.FlowManager;
@@ -18,6 +19,7 @@ import com.raizlabs.android.dbflow.config.FlowManager;
  */
 public class TwitterApp extends Application {
 	private static Context context;
+    private static User user;
 
 	@Override
 	public void onCreate() {
@@ -32,4 +34,12 @@ public class TwitterApp extends Application {
 	public static TwitterClient getRestClient() {
 		return (TwitterClient) TwitterClient.getInstance(TwitterClient.class, TwitterApp.context);
 	}
+
+    public static User getUser(){
+        return user;
+    }
+
+    public static void setUser(User value){
+        user = value;
+    }
 }
