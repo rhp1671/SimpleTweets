@@ -32,10 +32,12 @@
         android:layout_below="@id/tvScreenUserName"
         android:id="@+id/tvTweet"
         android:layout_width="wrap_content"
+        android:linksClickable="true"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvScreenUserName"
         android:layout_alignStart="@+id/tvScreenUserName"
-        />
+        android:autoLink="all"
+    />
     <TextView
         android:layout_marginLeft="10dp"
         android:text="user name"
@@ -46,4 +48,12 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/tvScreenUserName"
         android:layout_toEndOf="@+id/tvScreenUserName"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvUserName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="@dimen/timeline_tweet_layout_created_margin_right"
+        android:id="@+id/tvCreatedDate"/>
 </RelativeLayout>

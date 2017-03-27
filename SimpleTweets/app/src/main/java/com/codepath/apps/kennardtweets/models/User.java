@@ -35,14 +35,17 @@ public class User implements Parcelable{
     }
 
     public static User fromJSON(JSONObject json) {
-        User user = new User();
+        User user = null;
+        if (json != null) {
         try {
-            user.name = json.getString("name");
-            user.uid = json.getLong("id");
-            user.screenName = json.getString("screen_name");
-            user.profileImageUrl = json.getString("profile_image_url");
-        } catch (JSONException e) {
-            Log.d("DEBUG", e.getMessage());
+                user = new User();
+                user.name = json.getString("name");
+                user.uid = json.getLong("id");
+                user.screenName = json.getString("screen_name");
+                user.profileImageUrl = json.getString("profile_image_url");
+            } catch (JSONException e) {
+                Log.d("DEBUG", e.getMessage());
+            }
         }
         return user;
     }

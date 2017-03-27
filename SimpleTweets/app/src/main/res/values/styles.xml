@@ -33,4 +33,17 @@
         <item name="android:windowNoTitle">false</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="login_btn" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="holoTitle" parent="@android:style/Theme.Holo.Dialog">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+    <style name="photo">
+        <item name="android:layout_marginRight">@dimen/timeline_tweet_photo_margin</item>
+        <item name="android:paddingBottom">@dimen/timeline_tweet_photo_padding</item>
+        <item name="android:paddingTop">@dimen/timeline_tweet_photo_padding</item>>
+    </style>
 </resources>

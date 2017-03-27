@@ -3,6 +3,7 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+
    android:padding="5dp">
 
     <ImageView
@@ -60,9 +61,10 @@
 
 
     <RelativeLayout
+        android:layout_marginTop="@dimen/compose_tweet_layout_margin_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below ="@+id/tvTweetText"
         android:id ="@+id/bottom_container">
 
     <Button
